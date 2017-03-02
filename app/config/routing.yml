@@ -1,3 +1,7 @@
+cam_user:
+    resource: "@CAMUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
