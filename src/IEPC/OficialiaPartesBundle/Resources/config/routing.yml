@@ -1,0 +1,3 @@
+iepc_oficialia_partes_index:
+    path:     /
+    defaults: { _controller: IEPCOficialiaPartesBundle:RegistrarDocumento:index }

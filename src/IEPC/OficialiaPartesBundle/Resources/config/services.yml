@@ -1,0 +1,4 @@
+services:
+#    iepc_oficialia_partes.example:
+#        class: IEPC\OficialiaPartesBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

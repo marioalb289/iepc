@@ -1,5 +1,5 @@
-cam_user:
-    resource: "@CAMUserBundle/Resources/config/routing.yml"
+iepc_oficialia_partes:
+    resource: "@IEPCOficialiaPartesBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:
