@@ -1,7 +1,7 @@
 {% extends 'principal.html.twig' %}
 
 {% block body %}
-	<h1 class="page-header">Oficialia de Partes</h1>
+	<!-- <h1 class="page-header">Oficialia de Partes</h1>
 	<div class="panel panel-default">
 		<div class="panel-heading"><h4>Registro de Documentos</h4></div>
 		<div class="panel-body">
@@ -27,6 +27,56 @@
 			  </div>
 			  <button type="submit" class="btn btn-default">Submit</button>
 			</form>
+		</div>
+	</div> -->
+
+	{{ parent() }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h2>Registrar Entrada</h2>
+				</div>
+                {{ form_start(form, { 'attr' : {'role' : 'form'} }) }}
+                
+                <div class="form-group">
+                    {{ form_label(form.nombreEmisor) }}
+                    {{ form_widget(form.nombreEmisor, { 'attr' : {'class' : 'form-control', 'placeholder' : 'Nombre del Emisor'} }) }}
+                    <span class="text-danger">{{ form_errors(form.nombreEmisor) }}</span>
+                </div>
+                
+			    <div class="form-group">
+			        {{ form_label(form.institucionEmisor) }}
+			        {{ form_widget(form.institucionEmisor, {'attr': {'class': 'form-control', 'placeholder' : 'Nombre de la Institucion'}}) }}
+			        <span class="text-danger">{{ form_errors(form.institucionEmisor) }}</span>
+			    </div>
+
+			    <div class="form-group">
+			        {{ form_label(form.asuntoEmisor) }}
+			        {{ form_widget(form.asuntoEmisor, {'attr': {'class': 'form-control', 'placeholder' : 'Asunto'}}) }}
+			        <span class="text-danger">{{ form_errors(form.asuntoEmisor) }}</span>
+			    </div>
+
+			    <div class="form-group">
+			        {{ form_label(form.tipoDocumento) }}
+			        {{ form_widget(form.tipoDocumento, {'attr': {'class': 'form-control'}}) }}
+			        <span class="text-danger">{{ form_errors(form.tipoDocumento) }}</span>
+			    </div>
+
+			    <div class="form-group">
+			      <label for="exampleInputFile">Seleccionar Archivo</label>
+			      <input type="file" id="exampleInputFile">
+			      <p class="help-block">Example block-level help text here.</p>
+			    </div>
+			    
+			</fieldset>
+
+		    <p>
+		        {{ form_widget(form.save, {'label' : 'Crear Registro', 'attr': {'class': 'btn btn-success'}}) }}
+		    </p>                
+        
+                {{ form_end(form) }}
+			</div>
 		</div>
 	</div>
 

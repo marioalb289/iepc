@@ -1,3 +1,24 @@
 iepc_oficialia_partes_index:
     path:     /
     defaults: { _controller: IEPCOficialiaPartesBundle:RegistrarDocumento:index }
+
+iepc_oficilia_partes_add:
+    path:     /oficialia_partes/add
+    defaults: { _controller: IEPCOficialiaPartesBundle:RegistrarDocumento:add }
+
+iepc_oficilia_partes_create:
+    path:     /oficialia_partes/create
+    defaults: { _controller: IEPCOficialiaPartesBundle:RegistrarDocumento:create }
+    methods: POST
+
+emm_user_edit:
+    path:     /user/edit/{id}
+    defaults: { _controller: EMMUserBundle:User:edit }
+
+emm_user_view:
+    path:     /user/view/{id}
+    defaults: { _controller: EMMUserBundle:User:view }
+
+emm_user_delete:
+    path:     /user/delete/{id}
+    defaults: { _controller: EMMUserBundle:User:delete }  
