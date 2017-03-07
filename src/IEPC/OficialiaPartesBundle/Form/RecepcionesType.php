@@ -18,7 +18,7 @@ class RecepcionesType extends AbstractType
         ->add('institucionEmisor')
         ->add('asuntoEmisor')
         //->add('asuntoReceptor')
-        ->add('tipoDocumento', 'choice', array('choices' => array('SOLICITUD DE INFORMACION' => 'Solicitud Informacion', 'OTRO DOCUMENTO' => 'Otros Documentos'), 'placeholder' => 'Selecciona un tipo'))
+        ->add('respuesta', 'checkbox')
         ->add('save', 'submit', array('label' => 'Guardar Regstro'));
     }
 

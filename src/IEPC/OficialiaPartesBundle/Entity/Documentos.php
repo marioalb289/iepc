@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="oficialia_partes_documentos")
  * @ORM\Entity(repositoryClass="IEPC\OficialiaPartesBundle\Repository\DocumentosRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Documentos
 {
@@ -29,11 +30,11 @@ class Documentos
     private $nombre;
 
     /**
-     * @var string
+     * @var bool
      *
-     * @ORM\Column(name="tipo_solicitud", type="string", columnDefinition="ENUM('SOLICITUD','RESPUESTA')",length=50)
+     * @ORM\Column(name="respuesta", type="boolean", nullable=true)
      */
-    private $tipoSolicitud;
+    private $respuesta;
 
     /**
      * @var string
@@ -105,26 +106,26 @@ class Documentos
     }
 
     /**
-     * Set tipoSolicitud
+     * Set respuesta
      *
-     * @param string $tipoSolicitud
+     * @param boolean $respuesta
      * @return Documentos
      */
-    public function setTipoSolicitud($tipoSolicitud)
+    public function setRespuesta($respuesta)
     {
-        $this->tipoSolicitud = $tipoSolicitud;
+        $this->respuesta = $respuesta;
 
         return $this;
     }
 
     /**
-     * Get tipoSolicitud
+     * Get respuesta
      *
-     * @return string 
+     * @return boolean 
      */
-    public function getTipoSolicitud()
+    public function getRespuesta()
     {
-        return $this->tipoSolicitud;
+        return $this->respuesta;
     }
 
     /**
@@ -240,5 +241,21 @@ class Documentos
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createAt = new \DateTime();
+    }
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->updatedAt = new \DateTime();
     }
 }

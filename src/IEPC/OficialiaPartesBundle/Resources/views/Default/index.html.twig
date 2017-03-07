@@ -3,12 +3,14 @@
 {% block body %}
 
 	{{ parent() }}
+	{{ include('IEPCOficialiaPartesBundle:Default:success.html.twig') }}
+	{{ include('IEPCOficialiaPartesBundle:Default:failed.html.twig') }}
 	<h1 class="page-header">Oficialia de Partes</h1>
 	<div class="panel panel-default">
 		<div class="panel-heading"><h4>Registro de Documentos</h4></div>
 		<div class="panel-body">
 
-			{{ form_start(form, { 'attr' : {'role' : 'form'} }) }}
+			{{ form_start(form, { 'attr' : {'role' : 'form', 'enctype' : 'multipart/form-data'} }) }}
                 
                 <div class="form-group">
                     {{ form_label(form.nombreEmisor) }}
@@ -27,18 +29,18 @@
 			        {{ form_widget(form.asuntoEmisor, {'attr': {'class': 'form-control', 'placeholder' : 'Asunto'}}) }}
 			        <span class="text-danger">{{ form_errors(form.asuntoEmisor) }}</span>
 			    </div>
-
 			    <div class="form-group">
-			        {{ form_label(form.tipoDocumento) }}
-			        {{ form_widget(form.tipoDocumento, {'attr': {'class': 'form-control'}}) }}
-			        <span class="text-danger">{{ form_errors(form.tipoDocumento) }}</span>
-			    </div>
-
-			    <div class="form-group">
-			      <label for="exampleInputFile">Seleccionar Archivo</label>
-			      <input type="file" id="exampleInputFile">
+			      <label for="exampleInputFile">Seleccionar Archivo</label>			      
+			      <input type="file" name="archivo" id="documento_iepc">
 			      <p class="help-block">Example block-level help text here.</p>
 			    </div>
+
+			    <div class="checkbox">
+				    <label>
+						{{ form_widget(form.respuesta) }}{% trans %}Respuesta{% endtrans %}
+						<span class="text-danger">{{ form_errors(form.respuesta) }}</span>
+				    </label>
+				</div>
 
     		    <p>
     		        {{ form_widget(form.save, {'label' : 'Crear Registro', 'attr': {'class': 'btn btn-success'}}) }}

@@ -51,11 +51,11 @@ class Recepciones
     private $asuntoReceptor;
 
     /**
-     * @var string
+     * @var bool
      *
-     * @ORM\Column(name="tipo_documento", type="string",columnDefinition="ENUM('SOLICITUD DE INFORMACION','OTRO DOCUMENTO')", length=20)
+     * @ORM\Column(name="respuesta", type="boolean", nullable=true)
      */
-    private $tipoDocumento;
+    private $respuesta;
 
     /**
      * @var \DateTime
@@ -189,26 +189,26 @@ class Recepciones
     }
 
     /**
-     * Set tipoDocumento
+     * Set respuesta
      *
-     * @param string $tipoDocumento
+     * @param boolean $respuesta
      * @return Recepciones
      */
-    public function setTipoDocumento($tipoDocumento)
+    public function setRespuesta($respuesta)
     {
-        $this->tipoDocumento = $tipoDocumento;
+        $this->respuesta = $respuesta;
 
         return $this;
     }
 
     /**
-     * Get tipoDocumento
+     * Get respuesta
      *
-     * @return string 
+     * @return boolean 
      */
-    public function getTipoDocumento()
+    public function getRespuesta()
     {
-        return $this->tipoDocumento;
+        return $this->respuesta;
     }
 
     /**
@@ -319,3 +319,4 @@ class Recepciones
         $this->updatedAt = new \DateTime();
     }
 }
+?>
