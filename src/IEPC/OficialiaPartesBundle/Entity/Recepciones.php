@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="oficialia_partes_recepciones")
  * @ORM\Entity(repositoryClass="IEPC\OficialiaPartesBundle\Repository\RecepcionesRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Recepciones
 {
@@ -300,5 +301,21 @@ class Recepciones
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
+    }
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->updatedAt = new \DateTime();
     }
 }

@@ -49,26 +49,29 @@ class RegistrarDocumentoController extends Controller
 
     public function createAction(Request $request)
     {   
-        $user = new User();
-        $form = $this->createCreateForm($user);
+        $recepciones = new Recepciones();
+        $form = $this->createCreateForm($recepciones);
         $form->handleRequest($request);
         
         if($form->isValid())
         {
-            $password = $form->get('password')->getData();
+            /*$password = $form->get('password')->getData();
             
             $encoder = $this->container->get('security.password_encoder');
             $encoded = $encoder->encodePassword($user, $password);
             
-            $user->setPassword($encoded);
+            $user->setPassword($encoded);*/
+
+            $recepciones->setCreatedBy(1);
+            $recepciones->setUpdatedBy(1);
             
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
+            $em->persist($recepciones);
             $em->flush();
             
-            return $this->redirectToRoute('emm_user_index');
+            return $this->redirectToRoute('iepc_oficialia_partes_index');
         }
         
-        return $this->render('EMMUserBundle:User:add.html.twig', array('form' => $form->createView()));
+         return $this->render('IEPCOficialiaPartesBundle:Default:index.html.twig', array('form' => $form->createView()));
     }
 }
